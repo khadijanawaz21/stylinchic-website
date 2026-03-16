@@ -10,12 +10,10 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import MobileCallBar from "@/components/MobileCallBar";
-import GrainOverlay from "@/components/ui/GrainOverlay";
 
 export default function Home() {
   return (
     <>
-      <GrainOverlay />
       <Navbar />
       <main className="pb-14 md:pb-0">
         <Hero />
