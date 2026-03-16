@@ -15,7 +15,7 @@ export default function Hero() {
         src="/images/hero-collage.webp"
         alt="Collage of hair transformations at Stylin'Chic salon"
         fill
-        className="object-cover object-center scale-110 blur-[6px]"
+        className="object-cover object-center scale-110 blur-[3px]"
         placeholder="blur"
         blurDataURL="data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACwAwCdASoUAAsAPzmEuVOvKKWisAgB4CcJYwCdACIg82LXSf50AAD+zAi2dbZ1g0xz2XWAAhCGRlJ6D/WGlR+R0uLb8ymuNRv+o3cD+5zpIxoUE4mCPugr5PJoAA=="
         priority
@@ -28,6 +28,14 @@ export default function Hero() {
         style={{
           background:
             "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.65) 100%)",
+        }}
+      />
+
+      {/* Bottom fade into cream */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20"
+        style={{
+          background: "linear-gradient(to bottom, transparent 0%, #FAF7F2 100%)",
         }}
       />
 
