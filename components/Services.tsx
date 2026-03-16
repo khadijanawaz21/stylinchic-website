@@ -12,18 +12,17 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader title="Our Signature Services" />
 
-        {/* Bento grid — left card uses auto height, not row-span stretch */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
           {services.map((service, i) => {
             const img = images.services[i];
             return (
-              <AnimatedReveal key={service.title} delay={i * 0.1}>
+              <AnimatedReveal key={service.title} delay={i * 0.08}>
                 <motion.div
-                  className="group relative overflow-hidden rounded-3xl bg-cream p-8 transition-shadow duration-300 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl bg-cream p-5 transition-shadow duration-300 hover:shadow-lg sm:p-6"
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <div className="mb-6 aspect-[4/3] overflow-hidden rounded-2xl">
+                  <div className="mb-4 max-h-[220px] overflow-hidden rounded-xl sm:max-h-[280px]">
                     <motion.div
                       className="h-full w-full"
                       whileHover={{ scale: 1.05 }}
@@ -41,24 +40,24 @@ export default function Services() {
                     </motion.div>
                   </div>
 
-                  <h3 className="font-heading text-[22px] font-medium tracking-[-0.02em] text-espresso">
+                  <h3 className="font-heading text-[20px] font-medium tracking-[-0.02em] text-espresso">
                     {service.title}
                   </h3>
-                  <p className="mt-2 text-[15px] text-espresso/55 leading-relaxed">
+                  <p className="mt-1.5 text-[14px] text-espresso/55 leading-relaxed">
                     {service.description}
                   </p>
 
                   {service.note && (
-                    <p className="mt-2 text-[13px] font-medium text-accent">
+                    <p className="mt-1.5 text-[12px] font-medium text-accent">
                       {service.note}
                     </p>
                   )}
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-3 flex flex-wrap gap-1.5">
                     {service.tags.map((tag, tagIndex) => (
                       <motion.span
                         key={tag}
-                        className="rounded-full bg-cream-dark px-3 py-1 text-[12px] font-medium text-espresso/60"
+                        className="rounded-full bg-cream-dark px-2.5 py-0.5 text-[11px] font-medium text-espresso/55"
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -69,7 +68,7 @@ export default function Services() {
                     ))}
                   </div>
 
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
+                  <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
                 </motion.div>
               </AnimatedReveal>
             );
@@ -77,7 +76,7 @@ export default function Services() {
         </div>
 
         {/* Differentiator badges */}
-        <AnimatedReveal className="mt-12">
+        <AnimatedReveal className="mt-10">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {differentiators.map((item, i) => (
               <motion.div
