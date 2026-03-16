@@ -4,11 +4,11 @@ export default function MobileCallBar() {
   return (
     <a
       href="tel:+14164604592"
-      className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-2 bg-accent px-4 py-3.5 text-[15px] font-semibold text-white shadow-[0_-2px_12px_rgba(0,0,0,0.1)] md:hidden"
-      style={{ paddingBottom: "calc(0.875rem + env(safe-area-inset-bottom, 0px))" }}
+      className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center gap-2 bg-accent px-4 py-2 text-[14px] font-semibold text-white shadow-[0_-2px_12px_rgba(0,0,0,0.1)] md:hidden"
+      style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom, 0px))" }}
     >
       <svg
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
