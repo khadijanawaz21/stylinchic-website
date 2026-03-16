@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <a
               href="#"
-              className="font-serif text-2xl font-semibold text-cream"
+              className="font-heading text-[22px] font-semibold tracking-[-0.01em] text-cream"
             >
               Stylin&apos;Chic
             </a>

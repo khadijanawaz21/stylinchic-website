@@ -21,7 +21,7 @@ function FAQItem({
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        <span className="pr-4 text-lg font-medium text-espresso">
+        <span className="pr-4 text-base font-medium text-espresso">
           {faq.question}
         </span>
         <motion.span

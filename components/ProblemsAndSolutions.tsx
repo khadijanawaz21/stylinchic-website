@@ -12,10 +12,9 @@ export default function ProblemsAndSolutions() {
         <SectionHeader title="Problems We Solve" />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Problems column */}
           <AnimatedReveal direction="left">
             <div className="rounded-3xl bg-cream p-8 lg:p-10">
-              <h3 className="mb-8 font-serif text-2xl font-medium text-espresso">
+              <h3 className="mb-8 font-heading text-[22px] font-medium tracking-[-0.02em] text-espresso">
                 Hair Problems We Solve
               </h3>
               <div className="space-y-6">
@@ -44,10 +43,10 @@ export default function ProblemsAndSolutions() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-medium text-espresso">
+                      <h4 className="text-[15px] font-medium text-espresso">
                         {problem.title}
                       </h4>
-                      <p className="mt-1 text-sm text-espresso/60">
+                      <p className="mt-1 text-[14px] text-espresso/55">
                         {problem.description}
                       </p>
                     </div>
@@ -57,10 +56,9 @@ export default function ProblemsAndSolutions() {
             </div>
           </AnimatedReveal>
 
-          {/* Solutions column */}
           <AnimatedReveal direction="right">
             <div className="rounded-3xl bg-espresso p-8 lg:p-10">
-              <h3 className="mb-8 font-serif text-2xl font-medium text-cream">
+              <h3 className="mb-8 font-heading text-[22px] font-medium tracking-[-0.02em] text-cream">
                 How We Fix It
               </h3>
               <div className="space-y-6">
@@ -89,10 +87,10 @@ export default function ProblemsAndSolutions() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-medium text-cream">
+                      <h4 className="text-[15px] font-medium text-cream">
                         {solution.title}
                       </h4>
-                      <p className="mt-1 text-sm text-cream/60">
+                      <p className="mt-1 text-[14px] text-cream/55">
                         {solution.description}
                       </p>
                     </div>
@@ -103,7 +101,6 @@ export default function ProblemsAndSolutions() {
           </AnimatedReveal>
         </div>
 
-        {/* Visual connector lines (desktop) */}
         <div className="mt-8 hidden items-center justify-center gap-2 lg:flex">
           {[0, 1, 2].map((i) => (
             <motion.div

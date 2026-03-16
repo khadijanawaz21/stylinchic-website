@@ -17,14 +17,14 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <motion.div
-      className={`mb-16 text-center ${className}`}
+      className={`mb-14 text-center ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
       <h2
-        className={`font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight ${
+        className={`font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-medium tracking-[-0.02em] leading-[1.15] ${
           light ? "text-cream" : "text-espresso"
         }`}
       >
@@ -32,8 +32,8 @@ export default function SectionHeader({
       </h2>
       {subtitle && (
         <p
-          className={`mt-4 max-w-2xl mx-auto text-lg ${
-            light ? "text-cream/70" : "text-espresso/60"
+          className={`mt-3 max-w-2xl mx-auto text-base leading-relaxed ${
+            light ? "text-cream/70" : "text-espresso/55"
           }`}
         >
           {subtitle}

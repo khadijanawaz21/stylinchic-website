@@ -13,8 +13,8 @@
   --color-charcoal: #141414;
   --color-charcoal-light: #1E1E1E;
 
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
 /* Grain texture overlay */
@@ -34,7 +34,9 @@
 body {
   background-color: var(--color-cream);
   color: var(--color-espresso);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 html {

@@ -11,7 +11,6 @@ export default function Process() {
         <SectionHeader title="How It Works" light />
 
         <div className="relative grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-          {/* Connector line (desktop only) */}
           <div className="absolute top-12 left-[16.67%] right-[16.67%] hidden h-px bg-cream/20 md:block" />
 
           {processSteps.map((step, i) => (
@@ -23,17 +22,16 @@ export default function Process() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
             >
-              {/* Large decorative number */}
               <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border border-cream/20 bg-charcoal-light">
-                <span className="font-serif text-4xl font-bold text-accent">
+                <span className="font-heading text-4xl font-light text-accent/60">
                   {step.number}
                 </span>
               </div>
 
-              <h3 className="font-serif text-2xl font-medium text-cream">
+              <h3 className="font-heading text-[22px] font-medium text-cream tracking-[-0.02em]">
                 {step.title}
               </h3>
-              <p className="mt-3 text-cream/60 leading-relaxed">
+              <p className="mt-2 text-[15px] text-cream/55 leading-relaxed">
                 {step.description}
               </p>
             </motion.div>

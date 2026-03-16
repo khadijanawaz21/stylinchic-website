@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, Outfit } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const outfit = Outfit({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
@@ -36,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${playfair.variable} ${dmSans.variable} font-sans antialiased`}
+        className={`${cormorant.variable} ${outfit.variable} font-body antialiased`}
       >
         {children}
       </body>

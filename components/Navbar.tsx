@@ -56,7 +56,7 @@ export default function Navbar() {
             scrolled ? "bg-white/80" : "bg-white/60"
           }`}
         >
-          <a href="#" className="font-serif text-xl font-semibold text-espresso">
+          <a href="#" className="font-heading text-[22px] font-semibold text-espresso tracking-[-0.01em]">
             Stylin&apos;Chic
           </a>
 
@@ -66,10 +66,10 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-[14px] font-medium transition-colors duration-200 ${
                   activeSection === link.href
                     ? "text-accent"
-                    : "text-espresso/70 hover:text-espresso"
+                    : "text-espresso/65 hover:text-espresso"
                 }`}
               >
                 {link.label}
@@ -131,7 +131,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-serif text-3xl font-medium text-cream hover:text-accent transition-colors"
+                  className="font-heading text-2xl font-medium text-cream hover:text-accent transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}

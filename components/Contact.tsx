@@ -199,7 +199,7 @@ export default function Contact() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-serif text-2xl font-medium text-cream">
+                <h3 className="font-heading text-[22px] font-medium tracking-[-0.02em] text-cream">
                   Thank You!
                 </h3>
                 <p className="mt-2 text-cream/60">

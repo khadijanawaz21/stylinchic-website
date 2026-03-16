@@ -12,7 +12,6 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader title="Our Signature Services" />
 
-        {/* Bento / staggered grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-rows-2">
           {services.map((service, i) => {
             const img = images.services[i];
@@ -29,7 +28,6 @@ export default function Services() {
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* Service image */}
                   <div
                     className={`mb-6 overflow-hidden rounded-2xl ${
                       i === 0 ? "aspect-[4/3]" : "aspect-[16/9]"
@@ -52,25 +50,24 @@ export default function Services() {
                     </motion.div>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-medium text-espresso">
+                  <h3 className="font-heading text-[22px] font-medium tracking-[-0.02em] text-espresso">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-espresso/60 leading-relaxed">
+                  <p className="mt-2 text-[15px] text-espresso/55 leading-relaxed">
                     {service.description}
                   </p>
 
                   {service.note && (
-                    <p className="mt-2 text-sm font-medium text-accent">
+                    <p className="mt-2 text-[13px] font-medium text-accent">
                       {service.note}
                     </p>
                   )}
 
-                  {/* Tags */}
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {service.tags.map((tag, tagIndex) => (
                       <motion.span
                         key={tag}
-                        className="rounded-full bg-cream-dark px-3 py-1 text-xs font-medium text-espresso/70"
+                        className="rounded-full bg-cream-dark px-3 py-1 text-[12px] font-medium text-espresso/60"
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -81,7 +78,6 @@ export default function Services() {
                     ))}
                   </div>
 
-                  {/* Hover accent border */}
                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
                 </motion.div>
               </AnimatedReveal>

@@ -23,18 +23,18 @@ function StarRating({ rating }: { rating: number }) {
 
 function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
   return (
-    <div className="w-[350px] shrink-0 rounded-2xl bg-cream p-6 shadow-sm">
+    <div className="w-[340px] shrink-0 rounded-2xl bg-cream p-6 shadow-sm">
       <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-semibold text-accent">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-heading text-base font-semibold text-accent">
           {review.name.charAt(0)}
         </div>
         <div>
-          <p className="font-medium text-espresso">{review.name}</p>
-          <p className="text-xs text-espresso/50">{review.service}</p>
+          <p className="text-[14px] font-medium text-espresso">{review.name}</p>
+          <p className="text-[12px] text-espresso/50">{review.service}</p>
         </div>
       </div>
       <StarRating rating={review.rating} />
-      <p className="mt-3 text-sm leading-relaxed text-espresso/70">
+      <p className="mt-3 text-[14px] leading-relaxed text-espresso/60">
         &ldquo;{review.quote}&rdquo;
       </p>
     </div>
@@ -50,7 +50,6 @@ export default function Reviews() {
         <SectionHeader title="Client Love" />
       </div>
 
-      {/* Marquee container — slowed to 80s for leisurely reading */}
       <div className="group relative">
         <motion.div
           className="flex gap-6 px-6"
@@ -70,7 +69,6 @@ export default function Reviews() {
           ))}
         </motion.div>
 
-        {/* Gradient fades on edges */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream-dark/30 to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-cream-dark/30 to-transparent" />
       </div>

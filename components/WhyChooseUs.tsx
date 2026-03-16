@@ -16,9 +16,8 @@ export default function WhyChooseUs() {
         <SectionHeader title="Why Choose Stylin'Chic" />
 
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          {/* Text + badges side */}
           <AnimatedReveal direction="left">
-            <p className="text-lg leading-relaxed text-espresso/70">
+            <p className="text-base leading-relaxed text-espresso/60">
               Pickering&apos;s premier salon for Nanoplastia, Keratin, and
               Balayage. Expert treatments using premium products for
               transformative results. Proudly serving the GTA.
@@ -34,10 +33,10 @@ export default function WhyChooseUs() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 + i * 0.1 }}
                 >
-                  <h4 className="font-serif text-lg font-medium text-espresso">
+                  <h4 className="font-heading text-lg font-medium tracking-[-0.02em] text-espresso">
                     {item.title}
                   </h4>
-                  <p className="mt-1 text-sm text-espresso/60">
+                  <p className="mt-1 text-[14px] text-espresso/55">
                     {item.description}
                   </p>
                 </motion.div>
@@ -51,7 +50,6 @@ export default function WhyChooseUs() {
             </div>
           </AnimatedReveal>
 
-          {/* Image side */}
           <AnimatedReveal direction="right">
             <div className="aspect-[3/4] overflow-hidden rounded-3xl">
               <Image
