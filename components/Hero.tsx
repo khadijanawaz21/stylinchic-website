@@ -14,7 +14,7 @@ export default function Hero() {
         src="/images/hero-collage.webp"
         alt="Abstract hair texture background"
         fill
-        className="object-cover object-center"
+        className="object-cover object-center blur-[2px] scale-105"
         placeholder="blur"
         blurDataURL="data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAACQAwCdASoUAAsAPzmEuVOvKKWisAgB4CcJZACdABhvr+oZEH5oAP7L+wRjTkA7wBkHmQD+zN+KbGCWNus9lvt+d+QDPcb/c9b9xwg7asjn3tPVTcj0RBwnmoHwAA=="
         priority
