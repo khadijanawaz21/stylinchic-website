@@ -28,7 +28,7 @@ export default function ProblemsAndSolutions() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + i * 0.1 }}
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-rose/15 text-accent-rose">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-500/10 text-red-500">
                       <svg
                         className="h-5 w-5"
                         fill="none"

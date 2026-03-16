@@ -25,8 +25,7 @@ function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
   return (
     <div className="w-[350px] shrink-0 rounded-2xl bg-cream p-6 shadow-sm">
       <div className="flex items-center gap-3">
-        {/* Avatar placeholder */}
-        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-accent-rose/40 to-accent/30 font-serif text-lg font-semibold text-cream">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 font-serif text-lg font-semibold text-accent">
           {review.name.charAt(0)}
         </div>
         <div>
@@ -43,7 +42,6 @@ function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
 }
 
 export default function Reviews() {
-  // Double the reviews for seamless marquee loop
   const doubledReviews = [...reviews, ...reviews];
 
   return (
@@ -52,14 +50,14 @@ export default function Reviews() {
         <SectionHeader title="Client Love" />
       </div>
 
-      {/* Marquee container */}
+      {/* Marquee container — slowed to 80s for leisurely reading */}
       <div className="group relative">
         <motion.div
           className="flex gap-6 px-6"
           animate={{ x: [0, -50 * reviews.length + "%"] }}
           transition={{
             x: {
-              duration: 30,
+              duration: 80,
               repeat: Infinity,
               ease: "linear",
             },

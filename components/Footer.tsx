@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { navLinks, contactInfo } from "@/lib/data";
 
 export default function Footer() {
@@ -98,10 +97,9 @@ export default function Footer() {
           </p>
 
           {/* Back to top */}
-          <motion.button
+          <button
             onClick={scrollToTop}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-cream/40 transition-colors hover:border-accent hover:text-accent cursor-pointer"
-            whileHover={{ y: -2 }}
             aria-label="Back to top"
           >
             <svg
@@ -117,7 +115,7 @@ export default function Footer() {
                 d="M5 15l7-7 7 7"
               />
             </svg>
-          </motion.button>
+          </button>
         </div>
       </div>
     </footer>

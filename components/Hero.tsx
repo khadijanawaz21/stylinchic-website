@@ -13,7 +13,7 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-screen items-center overflow-hidden bg-cream"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-32 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-32 lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:px-8">
         {/* Text content — left side */}
         <div className="flex flex-col justify-center">
           <motion.div
@@ -27,7 +27,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1
-            className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[1.05] tracking-tight text-espresso"
+            className="font-serif text-[clamp(2.8rem,7vw,5.5rem)] font-medium leading-[1.02] tracking-tight text-espresso"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -61,39 +61,27 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Image area — right side */}
+        {/* Image area — right side, larger and more editorial */}
         <motion.div
           className="relative flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="relative aspect-[3/4] w-full max-w-md overflow-hidden rounded-3xl">
+          <div className="relative w-full overflow-hidden rounded-3xl">
             <Image
               src={hero.src}
               alt={hero.alt}
               width={hero.width}
               height={hero.height}
-              className="h-full w-full object-cover object-center"
+              className="h-auto w-full object-cover object-top"
               placeholder="blur"
               blurDataURL={hero.blurDataURL}
               priority
             />
+            {/* Bottom gradient fade into cream background */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cream to-transparent" />
           </div>
-
-          {/* Decorative floating element */}
-          <motion.div
-            className="absolute -bottom-4 -left-4 rounded-2xl bg-espresso px-6 py-4 text-cream shadow-xl lg:-left-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <p className="text-xs font-medium uppercase tracking-wider text-cream/60">
-              Trusted by
-            </p>
-            <p className="font-serif text-2xl font-semibold">32,000+</p>
-            <p className="text-sm text-cream/80">Happy Clients</p>
-          </motion.div>
         </motion.div>
       </div>
     </section>

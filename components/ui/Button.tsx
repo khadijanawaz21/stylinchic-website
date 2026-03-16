@@ -23,7 +23,7 @@ export default function Button({
     "inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm font-medium tracking-wide transition-colors duration-300 cursor-pointer";
 
   const variants = {
-    primary: "bg-accent text-cream hover:bg-accent-rose",
+    primary: "bg-accent text-white hover:bg-accent-hover",
     secondary: "bg-espresso text-cream hover:bg-espresso-light",
     outline:
       "border border-espresso/20 text-espresso hover:bg-espresso hover:text-cream",

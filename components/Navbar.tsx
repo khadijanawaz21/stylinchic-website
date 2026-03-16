@@ -14,7 +14,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Active section detection
       const sections = navLinks.map((link) =>
         document.querySelector(link.href)
       );
@@ -47,17 +46,17 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          scrolled
-            ? "bg-cream/90 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
-        }`}
+        className="fixed top-4 left-0 right-0 z-40 mx-auto w-[90%] max-w-5xl md:w-[85%]"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#" className="font-serif text-2xl font-semibold text-espresso">
+        <nav
+          className={`flex items-center justify-between rounded-full border border-white/15 px-6 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-colors duration-300 ${
+            scrolled ? "bg-white/80" : "bg-white/60"
+          }`}
+        >
+          <a href="#" className="font-serif text-xl font-semibold text-espresso">
             Stylin&apos;Chic
           </a>
 
@@ -132,7 +131,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="font-serif text-3xl font-medium text-cream hover:text-accent-rose transition-colors"
+                  className="font-serif text-3xl font-medium text-cream hover:text-accent transition-colors"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}

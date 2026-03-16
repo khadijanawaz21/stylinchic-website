@@ -16,7 +16,6 @@ export default function MeetExpert() {
 
         <AnimatedReveal className="mx-auto max-w-2xl">
           <div className="text-center">
-            {/* Shabana portrait */}
             <motion.div
               className="mx-auto mb-8 aspect-[3/4] w-64 overflow-hidden rounded-3xl"
               whileHover={{ scale: 1.02 }}
@@ -33,7 +32,6 @@ export default function MeetExpert() {
               />
             </motion.div>
 
-            {/* Decorative line */}
             <div className="mx-auto mb-6 h-px w-16 bg-accent" />
 
             <h3 className="font-serif text-3xl font-medium text-espresso">
@@ -51,7 +49,7 @@ export default function MeetExpert() {
               href="https://www.instagram.com/sty_lin_chic/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-rose transition-colors"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-hover transition-colors"
               whileHover={{ scale: 1.05 }}
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
