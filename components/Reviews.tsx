@@ -52,7 +52,7 @@ export default function Reviews() {
           animate={{ x: [0, -50 * reviews.length + "%"] }}
           transition={{
             x: {
-              duration: 80,
+              duration: 160,
               repeat: Infinity,
               ease: "linear",
             },
