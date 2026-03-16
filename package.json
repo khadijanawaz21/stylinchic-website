@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "color-grade": "node scripts/color-grade.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.37.0",
