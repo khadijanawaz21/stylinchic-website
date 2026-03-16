@@ -5,6 +5,9 @@ import { motion } from "framer-motion";
 import { contactInfo } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbwV2qO3sN_wPsc5m4_mVb6vyqStuPzEs9IYDZjV1twCygHw7wFOAs1vBLm8qLheZ_Kl/exec";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,6 +19,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const errs: Record<string, string> = {};
@@ -27,7 +31,7 @@ export default function Contact() {
     return errs;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -35,12 +39,32 @@ export default function Contact() {
       return;
     }
     setErrors({});
+    setSubmitError("");
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          date: formData.date,
+          message: formData.message,
+        }),
+      });
+
       setSubmitted(true);
       setFormData({ name: "", email: "", service: "", date: "", message: "" });
-    }, 1500);
+    } catch {
+      setSubmitError(
+        "Something went wrong. Please call us directly at +1 416-460-4592"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -67,7 +91,7 @@ export default function Contact() {
           <div className="flex h-full flex-col justify-between">
             {/* Testimonial */}
             <blockquote className="rounded-2xl border border-cream/10 p-6">
-              <p className="text-lg italic leading-relaxed text-cream/80">
+              <p className="text-base italic leading-relaxed text-cream/80">
                 &ldquo;Absolutely love my new look! Stylin&apos;Chic
                 completely transformed my hair with the perfect cut and
                 color.&rdquo;
@@ -78,10 +102,10 @@ export default function Contact() {
             </blockquote>
 
             {/* Contact details */}
-            <div className="mt-10 space-y-6">
+            <div className="mt-10 space-y-5">
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-3 text-cream/70 hover:text-cream transition-colors"
+                className="flex items-center gap-3 text-[15px] text-cream/70 hover:text-cream transition-colors"
               >
                 <svg
                   className="h-5 w-5 text-accent"
@@ -100,7 +124,7 @@ export default function Contact() {
               </a>
               <a
                 href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                className="flex items-center gap-3 text-cream/70 hover:text-cream transition-colors"
+                className="flex items-center gap-3 text-[15px] text-cream/70 hover:text-cream transition-colors"
               >
                 <svg
                   className="h-5 w-5 text-accent"
@@ -117,7 +141,7 @@ export default function Contact() {
                 </svg>
                 {contactInfo.phone}
               </a>
-              <div className="flex items-start gap-3 text-cream/70">
+              <div className="flex items-start gap-3 text-[15px] text-cream/70">
                 <svg
                   className="mt-0.5 h-5 w-5 shrink-0 text-accent"
                   fill="none"
@@ -140,8 +164,45 @@ export default function Contact() {
                 {contactInfo.address}
               </div>
 
+              {/* Business hours */}
+              <div className="flex items-start gap-3 text-[15px] text-cream/70">
+                <svg
+                  className="mt-0.5 h-5 w-5 shrink-0 text-accent"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div>
+                  <p>Mon–Sat: By Appointment Only</p>
+                  <p>Sunday: Closed</p>
+                  {/* TODO: Confirm exact hours with Shabana and update */}
+                </div>
+              </div>
+
+              {/* Google Map */}
+              <div className="mt-2 overflow-hidden rounded-xl shadow-sm">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.2938082661703!2d-79.11436028820131!3d43.87046383823129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cd7f9478a4dd%3A0x7a2345dee6e0bf24!2sStylin%E2%80%99Chic%20hair%20%26%20Beauty%20Salon%20Pickering!5e0!3m2!1sen!2s!4v1773688476790!5m2!1sen!2s"
+                  width="100%"
+                  height="220"
+                  className="h-[180px] w-full md:h-[220px]"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Stylin'Chic salon location on Google Maps"
+                />
+              </div>
+
               {/* Social links */}
-              <div className="flex gap-4 pt-2">
+              <div className="flex gap-4 pt-1">
                 <a
                   href={contactInfo.instagram}
                   target="_blank"
@@ -176,7 +237,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right — Form (no scroll animation, renders statically) */}
+          {/* Right — Form */}
           <div>
             {submitted ? (
               <motion.div
@@ -202,15 +263,21 @@ export default function Contact() {
                 <h3 className="font-heading text-[22px] font-medium tracking-[-0.02em] text-cream">
                   Thank You!
                 </h3>
-                <p className="mt-2 text-cream/60">
-                  We&apos;ll get back to you shortly to confirm your
-                  appointment.
+                <p className="mt-2 text-[15px] text-cream/60">
+                  Your booking request has been sent. We&apos;ll confirm your
+                  appointment within 24 hours.
                 </p>
+                <a
+                  href="tel:+14164604592"
+                  className="mt-4 text-[14px] text-cream/50 hover:text-cream transition-colors"
+                >
+                  Or call us directly: +1 416-460-4592
+                </a>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-6 text-sm font-medium text-accent hover:text-accent-hover transition-colors cursor-pointer"
+                  className="mt-6 text-[14px] font-medium text-accent hover:text-accent-hover transition-colors cursor-pointer"
                 >
-                  Book another appointment
+                  Send Another
                 </button>
               </motion.div>
             ) : (
@@ -219,6 +286,18 @@ export default function Contact() {
                 className="space-y-5 rounded-3xl border border-cream/10 p-8 lg:p-10"
                 noValidate
               >
+                {submitError && (
+                  <div className="rounded-xl bg-red-500/10 px-4 py-3 text-[14px] text-red-400">
+                    {submitError}{" "}
+                    <a
+                      href="tel:+14164604592"
+                      className="font-medium underline"
+                    >
+                      +1 416-460-4592
+                    </a>
+                  </div>
+                )}
+
                 <div>
                   <input
                     type="text"
@@ -230,9 +309,7 @@ export default function Contact() {
                     aria-label="Full Name"
                   />
                   {errors.name && (
-                    <p className="mt-1 text-xs text-red-400">
-                      {errors.name}
-                    </p>
+                    <p className="mt-1 text-xs text-red-400">{errors.name}</p>
                   )}
                 </div>
 
@@ -247,9 +324,7 @@ export default function Contact() {
                     aria-label="Email Address"
                   />
                   {errors.email && (
-                    <p className="mt-1 text-xs text-red-400">
-                      {errors.email}
-                    </p>
+                    <p className="mt-1 text-xs text-red-400">{errors.email}</p>
                   )}
                 </div>
 
@@ -315,7 +390,7 @@ export default function Contact() {
                           ease: "linear",
                         }}
                       />
-                      Booking...
+                      Sending...
                     </span>
                   ) : (
                     "Book Appointment"

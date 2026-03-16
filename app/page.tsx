@@ -2,15 +2,14 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BeforeAfter from "@/components/BeforeAfter";
 import Services from "@/components/Services";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import Process from "@/components/Process";
-import ProblemsAndSolutions from "@/components/ProblemsAndSolutions";
 import Reviews from "@/components/Reviews";
 import MeetExpert from "@/components/MeetExpert";
 import Gallery from "@/components/Gallery";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import MobileCallBar from "@/components/MobileCallBar";
 import GrainOverlay from "@/components/ui/GrainOverlay";
 
 export default function Home() {
@@ -18,13 +17,11 @@ export default function Home() {
     <>
       <GrainOverlay />
       <Navbar />
-      <main>
+      <main className="pb-14 md:pb-0">
         <Hero />
         <BeforeAfter />
         <Services />
-        <WhyChooseUs />
         <Process />
-        <ProblemsAndSolutions />
         <Reviews />
         <MeetExpert />
         <Gallery />
@@ -32,6 +29,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <MobileCallBar />
     </>
   );
 }

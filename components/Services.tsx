@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { services, images } from "@/lib/data";
+import { services, differentiators, images } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 import AnimatedReveal from "./ui/AnimatedReveal";
 
@@ -84,6 +84,29 @@ export default function Services() {
             );
           })}
         </div>
+
+        {/* Differentiator badges — merged from Why Choose Us */}
+        <AnimatedReveal className="mt-12">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {differentiators.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className="rounded-2xl border border-espresso/8 bg-cream px-5 py-4 text-center transition-colors hover:border-accent/25"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 + i * 0.08 }}
+              >
+                <h4 className="font-heading text-base font-medium tracking-[-0.02em] text-espresso">
+                  {item.title}
+                </h4>
+                <p className="mt-0.5 text-[13px] text-espresso/50">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </AnimatedReveal>
       </div>
     </section>
   );
