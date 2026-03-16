@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { images, type BeforeAfterPair } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 import AnimatedReveal from "./ui/AnimatedReveal";
 
-function Slider({ index }: { index: number }) {
+function Slider({ pair, index }: { pair: BeforeAfterPair; index: number }) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -46,20 +48,36 @@ function Slider({ index }: { index: number }) {
       tabIndex={0}
     >
       {/* "After" side (full background) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-rose/30 via-accent/20 to-sage/20">
-        {/* Replace with actual after image */}
-        <div className="absolute bottom-4 right-4 rounded-full bg-espresso/70 px-3 py-1 text-xs font-medium text-cream">
+      <div className="absolute inset-0">
+        <Image
+          src={pair.after.src}
+          alt={pair.after.alt}
+          width={pair.after.width}
+          height={pair.after.height}
+          className="h-full w-full object-cover"
+          placeholder="blur"
+          blurDataURL={pair.after.blurDataURL}
+        />
+        <div className="absolute bottom-4 right-4 z-20 rounded-full bg-espresso/70 px-3 py-1 text-xs font-medium text-cream">
           After
         </div>
       </div>
 
       {/* "Before" side (clipped) */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-cream-dark via-espresso/10 to-cream-dark"
+        className="absolute inset-0"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        {/* Replace with actual before image */}
-        <div className="absolute bottom-4 left-4 rounded-full bg-espresso/70 px-3 py-1 text-xs font-medium text-cream">
+        <Image
+          src={pair.before.src}
+          alt={pair.before.alt}
+          width={pair.before.width}
+          height={pair.before.height}
+          className="h-full w-full object-cover"
+          placeholder="blur"
+          blurDataURL={pair.before.blurDataURL}
+        />
+        <div className="absolute bottom-4 left-4 z-20 rounded-full bg-espresso/70 px-3 py-1 text-xs font-medium text-cream">
           Before
         </div>
       </div>
@@ -96,13 +114,13 @@ export default function BeforeAfter() {
         <SectionHeader title="The Proof is in the Results" />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[0, 1, 2].map((i) => (
+          {images.beforeAfter.map((pair, i) => (
             <AnimatedReveal key={i} delay={i * 0.15}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Slider index={i} />
+                <Slider pair={pair} index={i} />
               </motion.div>
             </AnimatedReveal>
           ))}

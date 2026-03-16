@@ -1,20 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { images } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 import AnimatedReveal from "./ui/AnimatedReveal";
 import Button from "./ui/Button";
-
-const galleryItems = [
-  { aspect: "aspect-[3/4]", span: "" },
-  { aspect: "aspect-square", span: "" },
-  { aspect: "aspect-[3/4]", span: "" },
-  { aspect: "aspect-square", span: "" },
-  { aspect: "aspect-[4/3]", span: "sm:col-span-2" },
-  { aspect: "aspect-[3/4]", span: "" },
-  { aspect: "aspect-square", span: "" },
-  { aspect: "aspect-[3/4]", span: "" },
-];
 
 export default function Gallery() {
   return (
@@ -23,29 +14,22 @@ export default function Gallery() {
         <SectionHeader title="Explore Our Transformations" />
 
         <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-          {galleryItems.map((item, i) => (
+          {images.gallery.map((img, i) => (
             <AnimatedReveal key={i} delay={i * 0.08} className="mb-4 break-inside-avoid">
               <motion.div
-                className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br from-cream-dark via-accent-rose/15 to-accent/10 ${item.aspect}`}
+                className="group relative overflow-hidden rounded-2xl"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {/* Replace with actual gallery image */}
-                <div className="absolute inset-0 flex items-center justify-center text-espresso/10">
-                  <svg
-                    className="h-10 w-10"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  className="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  placeholder="blur"
+                  blurDataURL={img.blurDataURL}
+                />
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-espresso/0 transition-colors duration-300 group-hover:bg-espresso/40">

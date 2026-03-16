@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { services } from "@/lib/data";
+import { services, images } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 import AnimatedReveal from "./ui/AnimatedReveal";
 
@@ -13,67 +14,79 @@ export default function Services() {
 
         {/* Bento / staggered grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-rows-2">
-          {services.map((service, i) => (
-            <AnimatedReveal
-              key={service.title}
-              delay={i * 0.1}
-              className={i === 0 ? "lg:row-span-2" : ""}
-            >
-              <motion.div
-                className={`group relative overflow-hidden rounded-3xl bg-cream p-8 transition-shadow duration-300 hover:shadow-xl ${
-                  i === 0 ? "h-full" : ""
-                }`}
-                whileHover={{ y: -2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          {services.map((service, i) => {
+            const img = images.services[i];
+            return (
+              <AnimatedReveal
+                key={service.title}
+                delay={i * 0.1}
+                className={i === 0 ? "lg:row-span-2" : ""}
               >
-                {/* Image placeholder */}
-                <div
-                  className={`mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-cream-dark via-accent-rose/15 to-accent/10 ${
-                    i === 0 ? "aspect-[4/3]" : "aspect-[16/9]"
+                <motion.div
+                  className={`group relative overflow-hidden rounded-3xl bg-cream p-8 transition-shadow duration-300 hover:shadow-xl ${
+                    i === 0 ? "h-full" : ""
                   }`}
+                  whileHover={{ y: -2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* Replace with actual service image */}
-                  <motion.div
-                    className="h-full w-full"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
-                  />
-                </div>
-
-                <h3 className="font-serif text-2xl font-medium text-espresso">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-espresso/60 leading-relaxed">
-                  {service.description}
-                </p>
-
-                {service.note && (
-                  <p className="mt-2 text-sm font-medium text-accent">
-                    {service.note}
-                  </p>
-                )}
-
-                {/* Tags */}
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {service.tags.map((tag, tagIndex) => (
-                    <motion.span
-                      key={tag}
-                      className="rounded-full bg-cream-dark px-3 py-1 text-xs font-medium text-espresso/70"
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + tagIndex * 0.05 }}
+                  {/* Service image */}
+                  <div
+                    className={`mb-6 overflow-hidden rounded-2xl ${
+                      i === 0 ? "aspect-[4/3]" : "aspect-[16/9]"
+                    }`}
+                  >
+                    <motion.div
+                      className="h-full w-full"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.4 }}
                     >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </div>
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        className="h-full w-full object-cover"
+                        placeholder="blur"
+                        blurDataURL={img.blurDataURL}
+                      />
+                    </motion.div>
+                  </div>
 
-                {/* Hover accent border */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
-              </motion.div>
-            </AnimatedReveal>
-          ))}
+                  <h3 className="font-serif text-2xl font-medium text-espresso">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-espresso/60 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {service.note && (
+                    <p className="mt-2 text-sm font-medium text-accent">
+                      {service.note}
+                    </p>
+                  )}
+
+                  {/* Tags */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {service.tags.map((tag, tagIndex) => (
+                      <motion.span
+                        key={tag}
+                        className="rounded-full bg-cream-dark px-3 py-1 text-xs font-medium text-espresso/70"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + tagIndex * 0.05 }}
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  {/* Hover accent border */}
+                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-accent transition-all duration-500 group-hover:w-full" />
+                </motion.div>
+              </AnimatedReveal>
+            );
+          })}
         </div>
       </div>
     </section>

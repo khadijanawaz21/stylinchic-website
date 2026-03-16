@@ -1,10 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { images } from "@/lib/data";
 import SectionHeader from "./ui/SectionHeader";
 import AnimatedReveal from "./ui/AnimatedReveal";
 
 export default function MeetExpert() {
+  const img = images.expert;
+
   return (
     <section className="bg-cream py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -12,28 +16,21 @@ export default function MeetExpert() {
 
         <AnimatedReveal className="mx-auto max-w-2xl">
           <div className="text-center">
-            {/* Large image placeholder */}
+            {/* Shabana portrait */}
             <motion.div
-              className="mx-auto mb-8 aspect-[3/4] w-64 overflow-hidden rounded-3xl bg-gradient-to-br from-accent-rose/25 via-cream-dark to-accent/15"
+              className="mx-auto mb-8 aspect-[3/4] w-64 overflow-hidden rounded-3xl"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Replace with actual photo of Shabana */}
-              <div className="flex h-full items-center justify-center text-espresso/15">
-                <svg
-                  className="h-16 w-16"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-              </div>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={img.width}
+                height={img.height}
+                className="h-full w-full object-cover object-center"
+                placeholder="blur"
+                blurDataURL={img.blurDataURL}
+              />
             </motion.div>
 
             {/* Decorative line */}
