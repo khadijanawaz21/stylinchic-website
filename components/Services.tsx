@@ -12,27 +12,18 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeader title="Our Signature Services" />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-rows-2">
+        {/* Bento grid — left card uses auto height, not row-span stretch */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {services.map((service, i) => {
             const img = images.services[i];
             return (
-              <AnimatedReveal
-                key={service.title}
-                delay={i * 0.1}
-                className={i === 0 ? "lg:row-span-2" : ""}
-              >
+              <AnimatedReveal key={service.title} delay={i * 0.1}>
                 <motion.div
-                  className={`group relative overflow-hidden rounded-3xl bg-cream p-8 transition-shadow duration-300 hover:shadow-xl ${
-                    i === 0 ? "h-full" : ""
-                  }`}
+                  className="group relative overflow-hidden rounded-3xl bg-cream p-8 transition-shadow duration-300 hover:shadow-xl"
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <div
-                    className={`mb-6 overflow-hidden rounded-2xl ${
-                      i === 0 ? "aspect-[4/3]" : "aspect-[16/9]"
-                    }`}
-                  >
+                  <div className="mb-6 aspect-[4/3] overflow-hidden rounded-2xl">
                     <motion.div
                       className="h-full w-full"
                       whileHover={{ scale: 1.05 }}
@@ -85,7 +76,7 @@ export default function Services() {
           })}
         </div>
 
-        {/* Differentiator badges — merged from Why Choose Us */}
+        {/* Differentiator badges */}
         <AnimatedReveal className="mt-12">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {differentiators.map((item, i) => (

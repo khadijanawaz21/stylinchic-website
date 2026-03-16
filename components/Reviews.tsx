@@ -23,20 +23,15 @@ function StarRating({ rating }: { rating: number }) {
 
 function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
   return (
-    <div className="w-[340px] shrink-0 rounded-2xl bg-cream p-6 shadow-sm">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-heading text-base font-semibold text-accent">
-          {review.name.charAt(0)}
-        </div>
-        <div>
-          <p className="text-[14px] font-medium text-espresso">{review.name}</p>
-          <p className="text-[12px] text-espresso/50">{review.service}</p>
-        </div>
-      </div>
+    <div className="w-[320px] shrink-0 rounded-2xl bg-cream p-5 shadow-sm">
       <StarRating rating={review.rating} />
       <p className="mt-3 text-[14px] leading-relaxed text-espresso/60">
         &ldquo;{review.quote}&rdquo;
       </p>
+      <div className="mt-4 border-t border-espresso/8 pt-3">
+        <p className="text-[14px] font-medium text-espresso">{review.name}</p>
+        <p className="text-[12px] text-espresso/45">{review.service}</p>
+      </div>
     </div>
   );
 }
@@ -50,7 +45,8 @@ export default function Reviews() {
         <SectionHeader title="Client Love" />
       </div>
 
-      <div className="group relative">
+      {/* Marquee — min-height prevents layout shift */}
+      <div className="group relative min-h-[200px]">
         <motion.div
           className="flex gap-6 px-6"
           animate={{ x: [0, -50 * reviews.length + "%"] }}

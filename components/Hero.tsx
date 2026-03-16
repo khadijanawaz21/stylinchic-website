@@ -11,9 +11,9 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-cream"
+      className="relative flex min-h-screen items-start overflow-hidden bg-cream pt-28 lg:pt-32"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 py-32 lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 pb-20 lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:px-8">
         {/* Text content — left side */}
         <div className="flex flex-col justify-center">
           <motion.div
@@ -61,9 +61,9 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Image area — right side */}
+        {/* Image area — right side, taller */}
         <motion.div
-          className="relative flex items-center justify-center"
+          className="relative flex items-start justify-center"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}

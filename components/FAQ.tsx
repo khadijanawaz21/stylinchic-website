@@ -69,7 +69,7 @@ export default function FAQ() {
   return (
     <section className="bg-cream py-24 lg:py-32">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <SectionHeader title="Answers to Your Most Common Questions" />
+        <SectionHeader title="Frequently Asked Questions" />
 
         <div>
           {faqs.map((faq, i) => (
