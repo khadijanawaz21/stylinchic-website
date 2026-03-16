@@ -12,7 +12,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > window.innerHeight * 0.8);
 
       const sections = navLinks.map((link) =>
         document.querySelector(link.href)
