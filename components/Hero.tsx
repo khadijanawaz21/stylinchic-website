@@ -2,85 +2,110 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { images } from "@/lib/data";
 import Button from "./ui/Button";
 
-export default function Hero() {
-  const hero = images.hero;
+const mosaicCells = [
+  { src: "/images/service-smoothing.webp", alt: "Glossy straight dark hair texture", scale: 2.8, position: "center 30%" },
+  { src: "/images/service-color.webp", alt: "Cherry burgundy red hair texture", scale: 2.5, position: "center 40%" },
+  { src: "/images/gallery-1.webp", alt: "Caramel balayage highlights texture", scale: 2.6, position: "center 35%" },
+  { src: "/images/gallery-4.webp", alt: "Bouncy brown curls texture", scale: 2.4, position: "center 45%" },
+  { src: "/images/why-choose.webp", alt: "Straight hair with highlights texture", scale: 2.7, position: "center 30%" },
+  { src: "/images/hero.webp", alt: "Dark smooth keratin result texture", scale: 2.5, position: "center 40%" },
+];
 
+export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-start overflow-hidden bg-cream pt-28 lg:pt-32"
+      className="relative min-h-[100svh] overflow-hidden bg-black"
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 pb-20 lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:px-8">
-        {/* Text content — left side */}
-        <div className="flex flex-col justify-center">
+      {/* Mosaic grid background */}
+      <div className="absolute inset-0 grid grid-cols-2 grid-rows-3 gap-0 md:grid-cols-3 md:grid-rows-2">
+        {mosaicCells.map((cell, i) => (
           <motion.div
-            className="mb-5 inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-4 py-2 text-[13px] font-medium text-accent"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            key={i}
+            className="relative overflow-hidden"
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.03, 1] }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 3.3,
+            }}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            32K+ Happy Customers
-          </motion.div>
-
-          <motion.h1
-            className="font-heading text-[clamp(2rem,5vw,3.75rem)] font-medium leading-[1.1] tracking-[-0.02em] text-espresso"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            Transform Your Hair with Nano Plastia &amp; Keratin Treatments
-          </motion.h1>
-
-          <motion.p
-            className="mt-5 max-w-xl text-base leading-relaxed text-espresso/55"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Pickering&apos;s premier destination for smoothing treatments,
-            balayage coloring, and hair restoration. Experience salon
-            excellence in the GTA.
-          </motion.p>
-
-          <motion.div
-            className="mt-8 flex flex-wrap gap-4"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <Button href="#contact" variant="primary">
-              Book an Appointment
-            </Button>
-            <Button href="#services" variant="outline">
-              View Services
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Image area — right side, taller */}
-        <motion.div
-          className="relative flex items-start justify-center"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative w-full overflow-hidden rounded-3xl">
             <Image
-              src={hero.src}
-              alt={hero.alt}
-              width={hero.width}
-              height={hero.height}
-              className="h-auto w-full object-cover object-top"
-              placeholder="blur"
-              blurDataURL={hero.blurDataURL}
-              priority
+              src={cell.src}
+              alt={cell.alt}
+              fill
+              className="object-cover"
+              style={{
+                transform: `scale(${cell.scale})`,
+                objectPosition: cell.position,
+              }}
+              priority={i < 3}
+              sizes="(max-width: 768px) 50vw, 33vw"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-cream to-transparent" />
-          </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Dark gradient overlay */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.8) 100%)",
+        }}
+      />
+
+      {/* Content — centered */}
+      <div className="relative z-20 flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
+        <motion.div
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[13px] font-medium text-white backdrop-blur-md"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          32K+ Happy Customers
+        </motion.div>
+
+        <motion.h1
+          className="max-w-3xl font-heading text-[clamp(2rem,5vw,3.75rem)] font-medium leading-[1.1] tracking-[-0.02em] text-white"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Transform Your Hair with Nano Plastia &amp; Keratin Treatments
+        </motion.h1>
+
+        <motion.p
+          className="mt-5 max-w-xl text-base leading-relaxed text-white/65"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          Pickering&apos;s premier destination for smoothing treatments,
+          balayage coloring, and hair restoration. Experience salon excellence
+          in the GTA.
+        </motion.p>
+
+        <motion.div
+          className="mt-8 flex flex-wrap justify-center gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
+          <Button href="#contact" variant="primary">
+            Book an Appointment
+          </Button>
+          <a
+            href="#services"
+            className="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-3.5 text-sm font-medium tracking-wide text-white transition-colors duration-300 hover:bg-white/10"
+          >
+            View Services
+          </a>
         </motion.div>
       </div>
     </section>

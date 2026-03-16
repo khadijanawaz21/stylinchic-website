@@ -52,11 +52,18 @@ export default function Navbar() {
         transition={{ duration: 0.6 }}
       >
         <nav
-          className={`flex items-center justify-between rounded-full border border-white/15 px-6 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl transition-colors duration-300 ${
-            scrolled ? "bg-white/80" : "bg-white/60"
+          className={`flex items-center justify-between rounded-full px-6 py-3 backdrop-blur-xl transition-all duration-200 ${
+            scrolled
+              ? "border border-white/15 bg-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
+              : "border border-white/12 bg-white/10"
           }`}
         >
-          <a href="#" className="font-heading text-[22px] font-semibold text-espresso tracking-[-0.01em]">
+          <a
+            href="#"
+            className={`font-heading text-[22px] font-semibold tracking-[-0.01em] transition-colors duration-200 ${
+              scrolled ? "text-espresso" : "text-white"
+            }`}
+          >
             Stylin&apos;Chic
           </a>
 
@@ -69,7 +76,9 @@ export default function Navbar() {
                 className={`text-[14px] font-medium transition-colors duration-200 ${
                   activeSection === link.href
                     ? "text-accent"
-                    : "text-espresso/65 hover:text-espresso"
+                    : scrolled
+                      ? "text-espresso/65 hover:text-espresso"
+                      : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -88,7 +97,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-1.5">
               <motion.span
-                className={`block h-0.5 w-6 ${mobileOpen ? "bg-cream" : "bg-espresso"}`}
+                className={`block h-0.5 w-6 transition-colors duration-200 ${
+                  mobileOpen
+                    ? "bg-cream"
+                    : scrolled
+                      ? "bg-espresso"
+                      : "bg-white"
+                }`}
                 animate={
                   mobileOpen
                     ? { rotate: 45, y: 4 }
@@ -97,12 +112,24 @@ export default function Navbar() {
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className={`block h-0.5 w-6 ${mobileOpen ? "bg-cream" : "bg-espresso"}`}
+                className={`block h-0.5 w-6 transition-colors duration-200 ${
+                  mobileOpen
+                    ? "bg-cream"
+                    : scrolled
+                      ? "bg-espresso"
+                      : "bg-white"
+                }`}
                 animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
                 transition={{ duration: 0.2 }}
               />
               <motion.span
-                className={`block h-0.5 w-6 ${mobileOpen ? "bg-cream" : "bg-espresso"}`}
+                className={`block h-0.5 w-6 transition-colors duration-200 ${
+                  mobileOpen
+                    ? "bg-cream"
+                    : scrolled
+                      ? "bg-espresso"
+                      : "bg-white"
+                }`}
                 animate={
                   mobileOpen
                     ? { rotate: -45, y: -4 }
