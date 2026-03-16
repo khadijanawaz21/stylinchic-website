@@ -52,10 +52,10 @@ export default function Navbar() {
         transition={{ duration: 0.6 }}
       >
         <nav
-          className={`flex items-center justify-between rounded-full px-6 py-3 backdrop-blur-xl transition-all duration-200 ${
+          className={`flex items-center justify-between rounded-full px-6 py-3 transition-all duration-200 ${
             scrolled
-              ? "border border-white/15 bg-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.06)]"
-              : "border border-white/12 bg-white/10"
+              ? "border border-white/15 bg-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-xl"
+              : "border border-white/12 bg-white/10 backdrop-blur-sm"
           }`}
         >
           <a
@@ -84,9 +84,16 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <Button href="#contact" variant="primary">
+            <a
+              href="#contact"
+              className={`inline-flex items-center justify-center rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover ${
+                scrolled
+                  ? ""
+                  : "shadow-[0_0_20px_rgba(139,92,246,0.4)]"
+              }`}
+            >
               Book Now
-            </Button>
+            </a>
           </div>
 
           {/* Mobile hamburger */}
